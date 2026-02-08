@@ -10,6 +10,13 @@ class TwoSumRequest(BaseModel):
 class TwoSumResponse(BaseModel):
     indices: list[int]
 
+@app.get("/")
+def root():
+    return {
+        "message": "Two Sum API is running",
+        "docs": "/api/docs"
+    }
+
 @app.post("/two-sum", response_model=TwoSumResponse)
 def two_sum(request: TwoSumRequest):
     lookup = {}
